@@ -61,7 +61,7 @@ export const metadata: Metadata = {
     images: ["/images/placeholder-og-cover.jpg"],
   },
   icons: {
-    icon: "/images/placeholder-favicon.png",
+    icon: "/images/logo.png",
   },
   robots: {
     index: true,

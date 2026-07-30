@@ -7,14 +7,12 @@ import Gallery from "@/components/Gallery";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
-import ExplodedHamburger from "@/components/ExplodedHamburguer";
 
 export default function Home() {
   return (
     <main>
       <Navbar />
       <Hero />
-      <ExplodedHamburger />
       <About />
       <Menu />
       <Testimonials />

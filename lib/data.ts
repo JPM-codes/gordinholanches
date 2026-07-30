@@ -74,7 +74,7 @@ export const menuItems: MenuItem[] = [
     description:
       "Muita carne bovina, cebola, bastante mussarela, bastante catupiry Scala, bacon Aurora e folheado com uma capa de queijo.",
     price: "R$ 60,00",
-    image: "/images/placeholder-cat-famosinhos.jpg",
+    image: "/images/produtos/famosinhos/irmao.jpg",
     category: "famosinhos",
     tag: "Mais pedido",
   },
@@ -84,7 +84,7 @@ export const menuItems: MenuItem[] = [
     description:
       "Muita carne bovina, muita mussarela, presunto, ovo, bacon Aurora, bastante catupiry Scala, alface, tomate, cebola, milho, batata palha e folheado com uma capa de queijo com bacon.",
     price: "R$ 85,00",
-    image: "/images/real/hamburguer-montado.png",
+    image: "/images/produtos/famosinhos/xroscao.jpg",
     category: "famosinhos",
     tag: "Mais pedido",
   },
@@ -94,7 +94,7 @@ export const menuItems: MenuItem[] = [
     description:
       "02 hambúrgueres de 120 gramas bovino, bastante mussarela, presunto, bacon Aurora, catupiry Scala, alface, milho e batata palha.",
     price: "R$ 55,00",
-    image: IMG.famosinhos,
+    image: "/images/produtos/famosinhos/xpatola_frances.jpg",
     category: "famosinhos",
   },
   {
@@ -103,7 +103,7 @@ export const menuItems: MenuItem[] = [
     description:
       "02 hambúrgueres de 120 gramas bovino, bastante mussarela, presunto, bacon Aurora, catupiry Scala, alface, milho e batata palha.",
     price: "R$ 45,00",
-    image: IMG.famosinhos,
+    image: "/images/produtos/famosinhos/xpatola_hamburguer.jpg",
     category: "famosinhos",
   },
   {
@@ -112,7 +112,7 @@ export const menuItems: MenuItem[] = [
     description:
       "3 hambúrgueres de 120 gramas bovino, bastante mussarela, presunto, ovos, 3 salsichas, bacon Aurora, catupiry Scala, alface, tomate, milho e batata palha.",
     price: "R$ 75,00",
-    image: IMG.famosinhos,
+    image: "/images/produtos/famosinhos/xbencao.jpg",
     category: "famosinhos",
   },
   {
@@ -120,7 +120,7 @@ export const menuItems: MenuItem[] = [
     name: "Tim Capoeira",
     description: "Muita carne bovina, bastante mussarela, bacon e batata palha.",
     price: "R$ 54,00",
-    image: IMG.famosinhos,
+    image: "/images/produtos/famosinhos/timcapoeira.jpg",
     category: "famosinhos",
   },
   {
@@ -129,7 +129,7 @@ export const menuItems: MenuItem[] = [
     description:
       "Bastante salsichas, bastante mussarela, bacon Aurora, catupiry Scala, alface, milho, batata palha e folheado com uma capa de queijo.",
     price: "R$ 50,00",
-    image: IMG.famosinhos,
+    image: "/images/produtos/famosinhos/superdogao.jpeg",
     category: "famosinhos",
   },
   {
@@ -138,7 +138,7 @@ export const menuItems: MenuItem[] = [
     description:
       "Muita carne bovina, frango, 1 carne de hambúrguer bovino de 120g, bastante mussarela, presunto, ovos, bacon Aurora, catupiry Scala, alface, tomate, milho e batata palha.",
     price: "R$ 125,00",
-    image: IMG.famosinhos,
+    image: "/images/produtos/famosinhos/xgordinho1.jpg",
     category: "famosinhos",
   },
   {
@@ -147,7 +147,7 @@ export const menuItems: MenuItem[] = [
     description:
       "2 hambúrgueres de 120 gramas bovinos, bastante mussarela, presunto, ovo, bacon Aurora, catupiry Scala, alface e milho.",
     price: "R$ 55,00",
-    image: IMG.famosinhos,
+    image: "/images/produtos/famosinhos/xtudo.jpg",
     category: "famosinhos",
   },
   {
@@ -156,7 +156,7 @@ export const menuItems: MenuItem[] = [
     description:
       "800 gramas de muita carne bovina, 800 gramas de frango, muita mussarela, presunto, ovos, bacon Aurora, catupiry Scala, alface, tomate, milho e batata palha.",
     price: "R$ 245,00",
-    image: IMG.famosinhos,
+    image: "/images/produtos/famosinhos/xgordinho2.jpg",
     category: "famosinhos",
   },
 
@@ -166,7 +166,7 @@ export const menuItems: MenuItem[] = [
     name: "Churrasco",
     description: "Muita carne bovina e bastante mussarela.",
     price: "R$ 48,00",
-    image: IMG.carne,
+    image: "/images/produtos/especiais_carne/churrasco.avif",
     category: "carne",
   },
   {
@@ -174,7 +174,7 @@ export const menuItems: MenuItem[] = [
     name: "Americano de Carne",
     description: "Muita carne bovina, bastante mussarela, ovos, alface e tomate.",
     price: "R$ 53,00",
-    image: IMG.carne,
+    image: "/images/produtos/especiais_carne/americano.jpg",
     category: "carne",
   },
   {
@@ -183,7 +183,7 @@ export const menuItems: MenuItem[] = [
     description:
       "Muita carne bovina, bastante mussarela, presunto, ovo, bacon Aurora, alface, tomate e milho.",
     price: "R$ 55,00",
-    image: IMG.carne,
+    image: "/images/produtos/especiais_carne/xtudo.jpg",
     category: "carne",
   },
 
@@ -194,7 +194,7 @@ export const menuItems: MenuItem[] = [
     description:
       "2 carnes de hambúrgueres de 120 gramas bovino, bastante mussarela, bacon, alface, milho e batata.",
     price: "R$ 34,00",
-    image: IMG.lanches,
+    image: "/images/produtos/lanches_especiais/duplo.png",
     category: "lanches-especiais",
   },
   {
@@ -202,7 +202,7 @@ export const menuItems: MenuItem[] = [
     name: "Misto Quente",
     description: "Bastante mussarela e bastante presunto.",
     price: "R$ 28,00",
-    image: IMG.lanches,
+    image: "/images/produtos/lanches_especiais/misto_quente.jpg",
     category: "lanches-especiais",
   },
   {
@@ -210,7 +210,7 @@ export const menuItems: MenuItem[] = [
     name: "Vegetariano",
     description: "Bastante ovos, bastante mussarela, alface, tomate e milho.",
     price: "R$ 35,00",
-    image: IMG.lanches,
+    image: "/images/produtos/lanches_especiais/vegetariano.jpg",
     category: "lanches-especiais",
   },
 
@@ -220,7 +220,7 @@ export const menuItems: MenuItem[] = [
     name: "Galinhão",
     description: "Frango, bastante mussarela, alface e milho.",
     price: "R$ 48,00",
-    image: IMG.frango,
+    image: "/images/produtos/especiais_frango/galinhao.jpg",
     category: "frango",
   },
   {
@@ -229,7 +229,7 @@ export const menuItems: MenuItem[] = [
     description:
       "Frango, bastante mussarela, presunto, ovo, bacon Aurora, alface, tomate e milho.",
     price: "R$ 55,00",
-    image: IMG.frango,
+    image: "/images/produtos/especiais_frango/xtudo.jpg",
     category: "frango",
   },
 
@@ -239,7 +239,7 @@ export const menuItems: MenuItem[] = [
     name: "Cachorro Quente Duplo",
     description: "2 salsichas Perdigão, alface, milho, batata palha e ketchup.",
     price: "R$ 15,00",
-    image: IMG.cachorro,
+    image: "/images/produtos/hotdog_especial/hotdog_duplo.jpg",
     category: "cachorro-quente",
   },
   {
@@ -247,7 +247,7 @@ export const menuItems: MenuItem[] = [
     name: "Cachorro Especial",
     description: "2 salsichas Perdigão, bacon, alface, milho, batata palha e ketchup.",
     price: "R$ 20,00",
-    image: IMG.cachorro,
+    image: "/images/produtos/hotdog_especial/hotdog_duplo_especial.jpg",
     category: "cachorro-quente",
   },
 
@@ -255,10 +255,9 @@ export const menuItems: MenuItem[] = [
   {
     id: "hamburguer-simples",
     name: "Hambúrguer",
-    description:
-      "1 carne de hambúrguer de 120 gramas bovino, bastante mussarela, bacon Aurora, alface, milho e batata palha.",
+    description: "1 carne de hambúrguer de 120 gramas bovino, bastante mussarela, bacon Aurora, alface, milho e batata palha.",
     price: "R$ 23,00",
-    image: IMG.hamburguer,
+    image: "/images/produtos/especiais_hamburguer/hamburguer.avif",
     category: "hamburguer",
   },
   {
@@ -267,7 +266,7 @@ export const menuItems: MenuItem[] = [
     description:
       "2 carnes de hambúrgueres de 120 gramas bovino, bacon Aurora, alface, milho e batata palha.",
     price: "R$ 27,00",
-    image: IMG.hamburguer,
+    image: "/images/produtos/especiais_hamburguer/hamburguer_duplo.png",
     category: "hamburguer",
   },
   {
@@ -276,7 +275,7 @@ export const menuItems: MenuItem[] = [
     description:
       "1 carne de hambúrguer de 120 gramas bovino, bastante mussarela, presunto, bacon Aurora, ovo, alface, tomate e milho.",
     price: "R$ 35,00",
-    image: IMG.hamburguer,
+    image: "/images/produtos/especiais_hamburguer/xtudo.avif",
     category: "hamburguer",
   },
   {
@@ -284,7 +283,7 @@ export const menuItems: MenuItem[] = [
     name: "X-Salada",
     description: "1 carne de hambúrguer de 120 gramas bovino, bastante mussarela, alface e tomate.",
     price: "R$ 28,00",
-    image: IMG.hamburguer,
+    image: "/images/produtos/especiais_hamburguer/xsalada.avif",
     category: "hamburguer",
   },
   {
@@ -293,7 +292,7 @@ export const menuItems: MenuItem[] = [
     description:
       "1 carne de hambúrguer de 120 gramas bovino, alface, bastante mussarela, presunto e muito bacon Aurora.",
     price: "R$ 32,00",
-    image: IMG.hamburguer,
+    image: "/images/produtos/especiais_hamburguer/xbacon.jpg",
     category: "hamburguer",
   },
   {
@@ -301,7 +300,7 @@ export const menuItems: MenuItem[] = [
     name: "X-Egg",
     description: "2 carnes de hambúrgueres de 120 gramas bovino, bastante mussarela e ovos.",
     price: "R$ 30,00",
-    image: IMG.hamburguer,
+    image: "/images/produtos/especiais_hamburguer/xegg.webp",
     category: "hamburguer",
   },
 
@@ -311,7 +310,7 @@ export const menuItems: MenuItem[] = [
     name: "Batata Tradicional",
     description: "Porção de batata frita tradicional, sequinha e crocante.",
     price: "R$ 15,00",
-    image: IMG.batata,
+    image: "/images/produtos/batatas/batata_frita_tradicional.jpg",
     category: "batatas",
   },
   {
@@ -319,7 +318,7 @@ export const menuItems: MenuItem[] = [
     name: "Batata com Cheddar Scala e Bacon Aurora",
     description: "Porção de batata frita coberta com cheddar Scala e bacon Aurora.",
     price: "R$ 20,00",
-    image: IMG.batata,
+    image: "/images/produtos/batatas/batata_bacon_cheddar.jpg",
     category: "batatas",
   },
 
@@ -329,7 +328,7 @@ export const menuItems: MenuItem[] = [
     name: "Coca-Cola 2L",
     description: "Garrafa de 2 litros, gelada.",
     price: "R$ 16,00",
-    image: IMG.bebida,
+    image: "/images/produtos/bebidas/coca_cola_2l.webp",
     category: "bebidas",
   },
   {
@@ -337,7 +336,7 @@ export const menuItems: MenuItem[] = [
     name: "Guaraná Antarctica 2L",
     description: "Garrafa de 2 litros, gelada.",
     price: "R$ 15,00",
-    image: IMG.bebida,
+    image: "/images/produtos/bebidas/guarana_antarctica_2l.webp",
     category: "bebidas",
   },
   {
@@ -345,7 +344,7 @@ export const menuItems: MenuItem[] = [
     name: "Coca-Cola 350ml",
     description: "Lata gelada.",
     price: "R$ 8,00",
-    image: IMG.bebida,
+    image: "/images/produtos/bebidas/coca_cola_350.webp",
     category: "bebidas",
   },
   {
@@ -353,7 +352,7 @@ export const menuItems: MenuItem[] = [
     name: "Coca-Cola Zero 350ml",
     description: "Lata gelada.",
     price: "R$ 8,00",
-    image: IMG.bebida,
+    image: "/images/produtos/bebidas/coca_cola_350_zero.webp",
     category: "bebidas",
   },
   {
@@ -361,7 +360,7 @@ export const menuItems: MenuItem[] = [
     name: "Guaraná Antarctica 350ml",
     description: "Lata gelada.",
     price: "R$ 8,00",
-    image: IMG.bebida,
+    image: "/images/produtos/bebidas/guarana_antarctica_350.webp",
     category: "bebidas",
   },
   {
@@ -369,7 +368,7 @@ export const menuItems: MenuItem[] = [
     name: "Fanta Laranja 350ml",
     description: "Lata gelada.",
     price: "R$ 8,00",
-    image: IMG.bebida,
+    image: "/images/produtos/bebidas/fanta_laranja_350.png",
     category: "bebidas",
   },
   {
@@ -377,7 +376,7 @@ export const menuItems: MenuItem[] = [
     name: "Fanta Uva 350ml",
     description: "Lata gelada.",
     price: "R$ 8,00",
-    image: IMG.bebida,
+    image: "/images/produtos/bebidas/fanta_uva_350.png",
     category: "bebidas",
   },
   {
@@ -385,7 +384,7 @@ export const menuItems: MenuItem[] = [
     name: "Água com Gás",
     description: "Garrafa gelada.",
     price: "R$ 6,00",
-    image: IMG.bebida,
+    image: "/images/produtos/bebidas/agua_gas.webp",
     category: "bebidas",
   },
   {
@@ -393,7 +392,7 @@ export const menuItems: MenuItem[] = [
     name: "Água sem Gás",
     description: "Garrafa gelada.",
     price: "R$ 6,00",
-    image: IMG.bebida,
+    image: "/images/produtos/bebidas/agua_sem_gas.webp",
     category: "bebidas",
   },
 ];
@@ -456,7 +455,7 @@ export type Testimonial = {
   url: string;
   reviewUrl: string;
   name: string;
-  text: string | null; 
+  text: string | null;
   stars: number;
 };
 
@@ -1263,13 +1262,16 @@ export const testimonials: Testimonial[] = [{
 
 // Galeria — grid irregular. Substituir pelas fotos reais do Instagram/Facebook.
 export const galleryImages = [
-  { id: "g1", image: "/images/placeholder-gallery-1.jpg", alt: "Hambúrguer artesanal Gordinho Lanches" },
-  { id: "g2", image: "/images/placeholder-gallery-2.jpg", alt: "Ambiente da hamburgueria" },
-  { id: "g3", image: "/images/placeholder-gallery-3.jpg", alt: "Preparo na chapa" },
-  { id: "g4", image: "/images/placeholder-gallery-4.jpg", alt: "Detalhe do lanche" },
-  { id: "g5", image: "/images/placeholder-gallery-5.jpg", alt: "Cliente satisfeito" },
-  { id: "g6", image: "/images/placeholder-gallery-6.jpg", alt: "Combo Gordinho Lanches" },
+  { id: "g1", image: "/images/gallery/lanche.jpg", alt: "Hambúrguer artesanal Gordinho Lanches" },
+  { id: "g2", image: "/images/gallery/lanche2.jpg", alt: "Ambiente da hamburgueria" },
+  { id: "g3", image: "/images/gallery/lanche3.jpg", alt: "Preparo na chapa" },
 ];
+
+export const galleryVideos = [
+  { id: "g1", video: "/videos/lanche.mp4", alt: "Video de um lanche" },
+  { id: "g2", video: "/videos/lanche2.mp4", alt: "Video de um lanche" },
+  { id: "g3", video: "/videos/lanche3.mp4", alt: "Video de um lanche" }
+]
 
 export function whatsappLink(message?: string) {
   const base = `https://wa.me/${restaurantInfo.whatsapp}`;

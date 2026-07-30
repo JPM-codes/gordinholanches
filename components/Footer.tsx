@@ -80,7 +80,7 @@ export default function Footer() {
           {/* TODO: substituir pelo embed real do Google Maps com o endereço definitivo */}
           <iframe
             title="Localização Gordinho Lanches"
-            src="https://www.google.com/maps?q=Araras,SP&output=embed"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8753.905919856865!2d-47.393202499999994!3d-22.3573641!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c8777677243467%3A0x14955253251e55c9!2sGordinho%20Lanches!5e1!3m2!1sen!2sbr!4v1785300259790!5m2!1sen!2sbr"
             width="100%"
             height="220"
             style={{ border: 0, filter: "grayscale(1) invert(0.92) contrast(0.9)" }}

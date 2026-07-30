@@ -1,7 +1,0 @@
-<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-  <!-- PLACEHOLDER: substituir pela logo oficial da Gordinho Lanches anexada pelo cliente -->
-  <circle cx="100" cy="100" r="96" fill="#0B0A08" stroke="#E8A93A" stroke-width="4"/>
-  <circle cx="100" cy="100" r="80" fill="#C41E1E"/>
-  <text x="100" y="92" font-family="Arial, sans-serif" font-size="30" font-weight="900" fill="#F3ECD9" text-anchor="middle">GORDINHO</text>
-  <text x="100" y="122" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#E8A93A" text-anchor="middle">LANCHES</text>
-</svg>
