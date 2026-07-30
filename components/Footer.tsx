@@ -2,6 +2,7 @@ import Image from "next/image";
 import { MapPin, Clock } from "lucide-react";
 import { restaurantInfo } from "@/lib/data";
 import { FaFacebook, FaInstagram, FaMapPin, FaPhone } from "react-icons/fa";
+import { basePath } from "@/lib/basePath";
 
 export default function Footer() {
   return (
@@ -10,7 +11,7 @@ export default function Footer() {
         <div>
           <div className="mb-4 flex items-center gap-3">
             <Image
-              src="/images/logo.png"
+              src={`${basePath}/images/logo.png`}
               alt="Gordinho Lanches"
               width={64}
               height={64}
