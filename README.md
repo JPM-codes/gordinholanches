@@ -10,7 +10,7 @@ npm install
 npm run dev
 ```
 
-Acesse `http://localhost:3000`.
+Acesse `http://localhost:3000`.<br>
 Para visualizar uma prévia, clique <a href="https://jpm-codes.github.io/gordinholanches/">AQUI</a>!
 
 
