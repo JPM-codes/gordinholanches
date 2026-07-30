@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Sparkles, Timer, HeartHandshake } from "lucide-react";
+import { basePath } from "@/lib/basePath";
 
 const pillars = [
   {
@@ -40,7 +41,7 @@ export default function About() {
             loop
             playsInline
           >
-            <source src="/videos/gordinho_fazendo_lanche.mp4" type="video/mp4" />
+            <source src={`${basePath}/videos/gordinho_fazendo_lanche.mp4`} type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-gradient-to-t from-char via-transparent to-transparent" />
         </motion.div>

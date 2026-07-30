@@ -6,6 +6,7 @@ import Image from "next/image";
 import { ShoppingCart } from "lucide-react";
 import { whatsappLink } from "@/lib/data";
 import { useCart } from "@/context/CartContext";
+import { basePath } from "@/lib/basePath";
 
 const links = [
   { label: "Sobre", href: "#sobre" },
@@ -39,7 +40,7 @@ export default function Navbar() {
         <a href="#topo" className="flex items-center gap-3">
           {/* Substituir pela logo real fornecida pelo cliente */}
           <Image
-            src="/images/logo.png"
+            src={`${basePath}/images/logo.png`}
             alt="Gordinho Lanches"
             width={64}
             height={64}

@@ -5,6 +5,7 @@ import SmoothScrollProvider from "@/lib/smooth-scroll";
 import { CartProvider } from "@/context/CartContext";
 import OrderModal from "@/components/OrderModal";
 import { restaurantInfo } from "@/lib/data";
+import { basePath } from "@/lib/basePath";
 
 const anton = Anton({
   weight: "400",
@@ -61,7 +62,7 @@ export const metadata: Metadata = {
     images: ["/images/placeholder-og-cover.jpg"],
   },
   icons: {
-    icon: "/images/logo.png",
+    icon: `${basePath}/images/logo.png`,
   },
   robots: {
     index: true,
