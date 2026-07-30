@@ -11,6 +11,7 @@ npm run dev
 ```
 
 Acesse `http://localhost:3000`.
+Para visualizar uma prévia, clique <a href="https://jpm-codes.github.io/gordinholanches/">AQUI</a>!
 
 
 ## Decisões de design
