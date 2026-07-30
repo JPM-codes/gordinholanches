@@ -84,8 +84,8 @@ export default function Navbar() {
             href={whatsappLink("Olá! Quero fazer um pedido no Gordinho Lanches.")}
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-full bg-ember px-5 py-2.5 text-sm font-semibold uppercase tracking-wide text-cream shadow-glow-red transition-transform hover:scale-105 hover:bg-ember-light active:scale-95"
-          >
+            className="rounded-full bg-ember px-5 py-2.5 text-sm text-center font-semibold uppercase tracking-wide 
+            text-cream shadow-glow-red transition-transform hover:scale-105 hover:bg-ember-light active:scale-95">
             Peça agora
           </a>
         </div>

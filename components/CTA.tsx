@@ -14,7 +14,7 @@ export default function CTA() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-        className="font-display text-[16vw] leading-[0.85] text-cream sm:text-[10vw] lg:text-8xl"
+        className="font-display text-[16vw] leading-[0.95] md:leading-[0.85] text-cream sm:text-[10vw] lg:text-8xl"
       >
         Está com fome?
       </motion.h2>
