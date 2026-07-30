@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { whatsappLink } from "@/lib/data";
+import { basePath } from "@/lib/basePath";
 
 const container = {
   hidden: {},
@@ -33,7 +34,7 @@ export default function Hero() {
         >
           <motion.div variants={item} className="mb-6">
             <Image
-              src="/images/logo.png"
+              src={`${basePath}/images/logo.png`}
               alt="Logo Gordinho Lanches"
               width={124}
               height={124}
