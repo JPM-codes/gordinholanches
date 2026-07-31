@@ -12,6 +12,9 @@ import {
   Store,
   MapPin,
   Check,
+  CreditCard,
+  QrCode,
+  Banknote,
 } from "lucide-react";
 import { whatsappLink } from "@/lib/data";
 import { useCart, AddOn, parsePrice, formatPrice } from "@/context/CartContext";
@@ -113,17 +116,15 @@ function ItemStep({
                 key={addOn.id}
                 type="button"
                 onClick={() => toggleAddOn(addOn)}
-                className={`w-full flex items-center justify-between p-3 rounded-xl border transition-colors text-left ${
-                  isSelected
-                    ? "border-gold/50 bg-gold/5"
-                    : "border-white/5 hover:border-white/20"
-                }`}
+                className={`w-full flex items-center justify-between p-3 rounded-xl border transition-colors text-left ${isSelected
+                  ? "border-gold/50 bg-gold/5"
+                  : "border-white/5 hover:border-white/20"
+                  }`}
               >
                 <div className="flex items-center gap-3">
                   <div
-                    className={`w-5 h-5 rounded border-2 flex items-center justify-center transition-colors shrink-0 ${
-                      isSelected ? "bg-gold border-gold" : "border-white/20"
-                    }`}
+                    className={`w-5 h-5 rounded border-2 flex items-center justify-center transition-colors shrink-0 ${isSelected ? "bg-gold border-gold" : "border-white/20"
+                      }`}
                   >
                     {isSelected && <Check size={14} className="text-char" />}
                   </div>
@@ -186,6 +187,16 @@ export default function OrderModal() {
   const [quantity, setQuantity] = useState(1);
   const [selectedAddOns, setSelectedAddOns] = useState<AddOn[]>([]);
   const [justAdded, setJustAdded] = useState(false);
+
+  const [paymentMethod, setPaymentMethod] = useState<
+    "card" | "pix" | "cash"
+  >("pix");
+
+  const [cardType, setCardType] = useState<"credit" | "debit">("credit");
+
+  const [needsChange, setNeedsChange] = useState(false);
+
+  const [changeFor, setChangeFor] = useState("");
 
   const [deliveryMethod, setDeliveryMethod] = useState<
     "pickup" | "delivery" | null
@@ -288,16 +299,46 @@ export default function OrderModal() {
 
   const handleSubmitOrder = useCallback(() => {
     if (submitting) return;
+
+    // Validação do pagamento em dinheiro
+    if (paymentMethod === "cash" && needsChange) {
+      const changeValue = parseFloat(changeFor.replace(",", "."));
+
+      if (!changeFor || isNaN(changeValue)) {
+        alert("Informe o valor para o qual precisa de troco.");
+        return;
+      }
+
+      if (changeValue < totalPrice) {
+        alert(
+          `O valor do troco deve ser maior ou igual ao total do pedido (${formatPrice(
+            totalPrice
+          )}).`
+        );
+        return;
+      }
+    }
+
     setSubmitting(true);
 
-    let message = "🛵 *NOVO PEDIDO - Gordinho Lanches* 🛵\n\n";
-    message += "*📋 ITENS:*\n";
+    let message = "*NOVO PEDIDO - Gordinho Lanches*\n\n";
+
+    // ITENS
+    message += "*ITENS:*\n";
 
     items.forEach((cartItem) => {
       const base = parsePrice(cartItem.menuItem.price);
-      const addOnTotal = cartItem.addOns.reduce((a, b) => a + b.price, 0);
-      const itemTotal = (base + addOnTotal) * cartItem.quantity;
-      message += `${cartItem.quantity}x ${cartItem.menuItem.name} - ${formatPrice(itemTotal)}\n`;
+      const addOnTotal = cartItem.addOns.reduce(
+        (a, b) => a + b.price,
+        0
+      );
+
+      const itemTotal =
+        (base + addOnTotal) * cartItem.quantity;
+
+      message += `${cartItem.quantity}x ${cartItem.menuItem.name
+        } - ${formatPrice(itemTotal)}\n`;
+
       if (cartItem.addOns.length > 0) {
         cartItem.addOns.forEach((ao) => {
           message += `   + ${ao.name} (${formatPrice(ao.price)})\n`;
@@ -305,28 +346,73 @@ export default function OrderModal() {
       }
     });
 
-    message += `\n💰 *TOTAL: ${formatPrice(totalPrice)}*\n\n`;
+    // TOTAL
+    message += `\n*TOTAL: ${formatPrice(totalPrice)}*\n\n`;
 
+    // ENTREGA / RETIRADA
     if (deliveryMethod === "pickup") {
-      message += "📍 *RETIRADA NO LOCAL*";
+      message += "*RETIRADA NO LOCAL*\n";
     } else if (deliveryMethod === "delivery") {
-      message += "📍 *ENTREGA:*\n";
+      message += "*ENTREGA:*\n";
       message += `Rua: ${address.street}\n`;
       message += `Bairro: ${address.neighborhood}\n`;
       message += `N°: ${address.number}\n`;
+
       if (address.reference) {
         message += `Complemento: ${address.reference}\n`;
       }
     }
 
+    // PAGAMENTO
+    message += "\n*FORMA DE PAGAMENTO:*\n";
+
+    if (paymentMethod === "pix") {
+      message += "Pix\n";
+    }
+
+    if (paymentMethod === "card") {
+      message += `Cartão - ${cardType === "credit" ? "Crédito" : "Débito"
+        }\n`;
+    }
+
+    if (paymentMethod === "cash") {
+      message += "Dinheiro\n";
+
+      if (needsChange) {
+        const changeValue = parseFloat(
+          changeFor.replace(",", ".")
+        );
+
+        message += `Troco para: ${formatPrice(changeValue)}\n`;
+
+        const changeAmount = changeValue - totalPrice;
+
+        message += `Valor do troco: ${formatPrice(changeAmount)}\n`;
+      } else {
+        message += "Não precisa de troco\n";
+      }
+    }
+
     const url = whatsappLink(message);
+
     window.open(url, "_blank", "noopener,noreferrer");
 
     setTimeout(() => {
       closeModal();
       setSubmitting(false);
     }, 500);
-  }, [items, totalPrice, deliveryMethod, address, submitting, closeModal]);
+  }, [
+    items,
+    totalPrice,
+    deliveryMethod,
+    address,
+    paymentMethod,
+    cardType,
+    needsChange,
+    changeFor,
+    submitting,
+    closeModal,
+  ]);
 
   const handleCloseAndClear = useCallback(() => {
     closeModal();
@@ -548,18 +634,16 @@ export default function OrderModal() {
                     <button
                       type="button"
                       onClick={() => setDeliveryMethod("pickup")}
-                      className={`w-full flex items-center gap-4 p-4 rounded-xl border transition-colors ${
-                        deliveryMethod === "pickup"
-                          ? "border-gold bg-gold/5"
-                          : "border-white/5 hover:border-white/20"
-                      }`}
+                      className={`w-full flex items-center gap-4 p-4 rounded-xl border transition-colors ${deliveryMethod === "pickup"
+                        ? "border-gold bg-gold/5"
+                        : "border-white/5 hover:border-white/20"
+                        }`}
                     >
                       <div
-                        className={`w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 ${
-                          deliveryMethod === "pickup"
-                            ? "border-gold"
-                            : "border-white/20"
-                        }`}
+                        className={`w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 ${deliveryMethod === "pickup"
+                          ? "border-gold"
+                          : "border-white/20"
+                          }`}
                       >
                         {deliveryMethod === "pickup" && (
                           <div className="w-2.5 h-2.5 rounded-full bg-gold" />
@@ -571,25 +655,23 @@ export default function OrderModal() {
                           Retirada no local
                         </p>
                         <p className="text-xs text-cream/40">
-          Busque na lanchonete
+                          Busque na lanchonete
                         </p>
                       </div>
                     </button>
                     <button
                       type="button"
                       onClick={() => setDeliveryMethod("delivery")}
-                      className={`w-full flex items-center gap-4 p-4 rounded-xl border transition-colors ${
-                        deliveryMethod === "delivery"
-                          ? "border-gold bg-gold/5"
-                          : "border-white/5 hover:border-white/20"
-                      }`}
+                      className={`w-full flex items-center gap-4 p-4 rounded-xl border transition-colors ${deliveryMethod === "delivery"
+                        ? "border-gold bg-gold/5"
+                        : "border-white/5 hover:border-white/20"
+                        }`}
                     >
                       <div
-                        className={`w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 ${
-                          deliveryMethod === "delivery"
-                            ? "border-gold"
-                            : "border-white/20"
-                        }`}
+                        className={`w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 ${deliveryMethod === "delivery"
+                          ? "border-gold"
+                          : "border-white/20"
+                          }`}
                       >
                         {deliveryMethod === "delivery" && (
                           <div className="w-2.5 h-2.5 rounded-full bg-gold" />
@@ -672,6 +754,203 @@ export default function OrderModal() {
                     </motion.div>
                   )}
                 </AnimatePresence>
+
+                <div className="mb-6">
+                  <label className="text-xs font-bold uppercase tracking-wider text-cream/60 mb-3 block">
+                    Forma de Pagamento
+                  </label>
+
+                  <div className="space-y-3">
+                    {/* CARTÃO */}
+                    <button
+                      type="button"
+                      onClick={() => setPaymentMethod("card")}
+                      className={`w-full flex items-center gap-4 p-4 rounded-xl border transition-colors ${paymentMethod === "card"
+                        ? "border-gold bg-gold/5"
+                        : "border-white/5 hover:border-white/20"
+                        }`}
+                    >
+                      <div
+                        className={`w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 ${paymentMethod === "card"
+                          ? "border-gold"
+                          : "border-white/20"
+                          }`}
+                      >
+                        {paymentMethod === "card" && (
+                          <div className="w-2.5 h-2.5 rounded-full bg-gold" />
+                        )}
+                      </div>
+
+                      <CreditCard
+                        size={20}
+                        className="text-cream/60 shrink-0"
+                      />
+
+                      <div className="text-left">
+                        <p className="text-sm font-semibold text-cream">
+                          Cartão
+                        </p>
+                        <p className="text-xs text-cream/40">
+                          Crédito ou débito
+                        </p>
+                      </div>
+                    </button>
+
+                    {/* OPÇÕES DO CARTÃO */}
+                    {paymentMethod === "card" && (
+                      <div className="grid grid-cols-2 gap-3 pl-9">
+                        <button
+                          type="button"
+                          onClick={() => setCardType("credit")}
+                          className={`p-3 rounded-xl border text-sm transition-colors ${cardType === "credit"
+                            ? "border-gold bg-gold/5 text-gold"
+                            : "border-white/5 text-cream/60 hover:border-white/20"
+                            }`}
+                        >
+                          Crédito
+                        </button>
+
+                        <button
+                          type="button"
+                          onClick={() => setCardType("debit")}
+                          className={`p-3 rounded-xl border text-sm transition-colors ${cardType === "debit"
+                            ? "border-gold bg-gold/5 text-gold"
+                            : "border-white/5 text-cream/60 hover:border-white/20"
+                            }`}
+                        >
+                          Débito
+                        </button>
+                      </div>
+                    )}
+
+                    {/* PIX */}
+                    <button
+                      type="button"
+                      onClick={() => setPaymentMethod("pix")}
+                      className={`w-full flex items-center gap-4 p-4 rounded-xl border transition-colors ${paymentMethod === "pix"
+                        ? "border-gold bg-gold/5"
+                        : "border-white/5 hover:border-white/20"
+                        }`}
+                    >
+                      <div
+                        className={`w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 ${paymentMethod === "pix"
+                          ? "border-gold"
+                          : "border-white/20"
+                          }`}
+                      >
+                        {paymentMethod === "pix" && (
+                          <div className="w-2.5 h-2.5 rounded-full bg-gold" />
+                        )}
+                      </div>
+
+                      <QrCode
+                        size={20}
+                        className="text-cream/60 shrink-0"
+                      />
+
+                      <div className="text-left">
+                        <p className="text-sm font-semibold text-cream">
+                          Pix
+                        </p>
+                        <p className="text-xs text-cream/40">
+                          Pagamento instantâneo
+                        </p>
+                      </div>
+                    </button>
+
+                    {/* DINHEIRO */}
+                    <button
+                      type="button"
+                      onClick={() => setPaymentMethod("cash")}
+                      className={`w-full flex items-center gap-4 p-4 rounded-xl border transition-colors ${paymentMethod === "cash"
+                        ? "border-gold bg-gold/5"
+                        : "border-white/5 hover:border-white/20"
+                        }`}
+                    >
+                      <div
+                        className={`w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 ${paymentMethod === "cash"
+                          ? "border-gold"
+                          : "border-white/20"
+                          }`}
+                      >
+                        {paymentMethod === "cash" && (
+                          <div className="w-2.5 h-2.5 rounded-full bg-gold" />
+                        )}
+                      </div>
+
+                      <Banknote
+                        size={20}
+                        className="text-cream/60 shrink-0"
+                      />
+
+                      <div className="text-left">
+                        <p className="text-sm font-semibold text-cream">
+                          Dinheiro
+                        </p>
+                        <p className="text-xs text-cream/40">
+                          Pagamento em dinheiro
+                        </p>
+                      </div>
+                    </button>
+
+                    {/* TROCO */}
+                    {paymentMethod === "cash" && (
+                      <div className="ml-9 p-4 rounded-xl border border-white/5 bg-white/[0.02]">
+                        <label className="text-xs font-semibold text-cream/60 mb-2 block">
+                          Precisa de troco?
+                        </label>
+
+                        <div className="flex gap-3">
+                          <button
+                            type="button"
+                            onClick={() => setNeedsChange(false)}
+                            className={`flex-1 p-3 rounded-xl border text-sm transition-colors ${!needsChange
+                              ? "border-gold bg-gold/5 text-gold"
+                              : "border-white/5 text-cream/60 hover:border-white/20"
+                              }`}
+                          >
+                            Não
+                          </button>
+
+                          <button
+                            type="button"
+                            onClick={() => setNeedsChange(true)}
+                            className={`flex-1 p-3 rounded-xl border text-sm transition-colors ${needsChange
+                              ? "border-gold bg-gold/5 text-gold"
+                              : "border-white/5 text-cream/60 hover:border-white/20"
+                              }`}
+                          >
+                            Sim
+                          </button>
+                        </div>
+
+                        {needsChange && (
+                          <div className="mt-3">
+                            <label className="text-xs text-cream/40 mb-2 block">
+                              Troco para quanto?
+                            </label>
+
+                            <div className="relative">
+                              <span className="absolute left-4 top-1/2 -translate-y-1/2 text-cream/40">
+                                R$
+                              </span>
+
+                              <input
+                                type="number"
+                                min="0"
+                                step="0.01"
+                                value={changeFor}
+                                onChange={(e) => setChangeFor(e.target.value)}
+                                placeholder="0,00"
+                                className="w-full rounded-xl border border-white/5 bg-white/[0.03] py-3 pl-11 pr-4 text-sm text-cream outline-none transition-colors placeholder:text-cream/20 focus:border-gold"
+                              />
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                </div>
 
                 <div className="py-4 border-t border-white/5 mb-4">
                   <p className="text-xs font-bold uppercase tracking-wider text-cream/60 mb-3">
