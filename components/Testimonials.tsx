@@ -30,7 +30,9 @@ export default function Testimonials() {
   const loop = [...testimonials, ...testimonials];
 
   return (
-    <section id="avaliacoes" className="relative py-28">
+    <section id="avaliacoes" className="relative overflow-hidden bg-[#0D0A08] pb-16 pt-28 lg:pt-32">
+
+      {/* Vinheta */}
       <div className="mx-auto mb-14 max-w-7xl px-6 text-center lg:px-10">
         <p className="mb-3 text-sm font-semibold uppercase tracking-[0.35em] text-gold">
           Avaliações
@@ -68,13 +70,13 @@ export default function Testimonials() {
           }}
         >
           {loop
-          .filter((t) => t.stars >= 4 && t.text !== null)
-          .map((t, i) => (
-            <TestimonialCard
-              key={`${t.reviewUrl}-${i}`}
-              t={t}
-            />
-          ))}
+            .filter((t) => t.stars >= 4 && t.text !== null)
+            .map((t, i) => (
+              <TestimonialCard
+                key={`${t.reviewUrl}-${i}`}
+                t={t}
+              />
+            ))}
         </motion.div>
       </div>
     </section>

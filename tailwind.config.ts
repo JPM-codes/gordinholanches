@@ -9,6 +9,9 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        dropShadow: {
+          '3xl': '0 35px 35px rgba(0, 0, 0, 0.25)',
+        },
         // Paleta derivada da identidade Gordinho Lanches
         ember: {
           DEFAULT: "#C41E1E", // vermelho brasa — cor de assinatura

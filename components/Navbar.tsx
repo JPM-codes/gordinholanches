@@ -7,6 +7,8 @@ import { ShoppingCart } from "lucide-react";
 import { whatsappLink } from "@/lib/data";
 import { useCart } from "@/context/CartContext";
 import { basePath } from "@/lib/basePath";
+import { GoChevronRight } from "react-icons/go";
+import {TbMotorbikeFilled } from "react-icons/tb";
 
 const links = [
   { label: "Sobre", href: "#sobre" },
@@ -30,11 +32,10 @@ export default function Navbar() {
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      className={`fixed top-0 z-50 w-full transition-all duration-500 ${
-        scrolled
-          ? "bg-char/80 backdrop-blur-xl border-b border-white/5 py-3"
-          : "bg-transparent py-6"
-      }`}
+      className={`fixed top-0 z-50 w-full transition-all duration-500 ${scrolled
+        ? "bg-char/80 backdrop-blur-xl border-b border-white/5 py-3"
+        : "bg-transparent py-6"
+        }`}
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-10">
         <a href="#topo" className="flex items-center gap-3">
@@ -56,10 +57,10 @@ export default function Navbar() {
             <li key={link.href}>
               <a
                 href={link.href}
-                className="group relative text-sm font-medium uppercase tracking-wider text-cream/80 transition-colors hover:text-cream"
+                className="group relative text-sm font-medium uppercase tracking-wider text-cream/80 transition-colors hover:text-ember"
               >
                 {link.label}
-                <span className="absolute -bottom-1 left-0 h-px w-0 bg-gold transition-all duration-300 group-hover:w-full" />
+                <span className="absolute -bottom-1 left-0 h-px w-0 bg-ember transition-all duration-300 group-hover:w-full" />
               </a>
             </li>
           ))}
@@ -74,7 +75,8 @@ export default function Navbar() {
           >
             <ShoppingCart size={22} />
             {totalItems > 0 && (
-              <span className="absolute -top-1 -right-1 flex items-center justify-center w-5 h-5 rounded-full bg-ember text-[10px] font-bold text-cream tabular-nums">
+              <span className="absolute -top-1 -right-1 flex items-center justify-center w-5 h-5 
+              rounded-full bg-ember text-[10px] font-bold text-cream tabular-nums">
                 {totalItems > 9 ? "9+" : totalItems}
               </span>
             )}
@@ -84,9 +86,27 @@ export default function Navbar() {
             href={whatsappLink("Olá! Quero fazer um pedido no Gordinho Lanches.")}
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-full bg-ember px-5 py-2.5 text-sm text-center font-semibold uppercase tracking-wide 
-            text-cream shadow-glow-red transition-transform hover:scale-105 hover:bg-ember-light active:scale-95">
-            Peça agora
+            className="
+            group
+            inline-flex items-center justify-center gap-2
+            rounded-full
+            bg-ember
+            px-8 py-3
+            text-sm font-semibold uppercase tracking-wide
+            text-cream
+            shadow-glow-red
+            transition-all duration-300
+            hover:bg-ember-light hover:scale-105
+            active:scale-95
+            ">
+            <TbMotorbikeFilled size={20} />
+
+            <span>Peça agora</span>
+
+            <GoChevronRight
+              size={16}
+              className="transition-transform duration-300 group-hover:translate-x-1"
+            />
           </a>
         </div>
       </nav>

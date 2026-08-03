@@ -28,6 +28,13 @@ export const restaurantInfo = {
   reviewCount: 320,
 };
 
+export const stats = [
+  { value: "4,9", label: "Avaliação geral", stars: true },
+  { value: "+2.300", label: "Pedidos realizados" },
+  { value: "Entrega rápida", label: "Em até 45 min" },
+  { value: "Ingredientes frescos", label: "E de qualidade" },
+];
+
 // ---- Categorias do cardápio (usadas no filtro da seção Cardápio) ----------
 
 export type MenuCategory = {

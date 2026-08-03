@@ -16,7 +16,9 @@ const spanClasses = [
 
 export default function Gallery() {
   return (
-    <section id="galeria" className="relative px-6 py-28 lg:px-10">
+    <section id="galeria" className="relative overflow-hidden bg-[#0D0A08] pb-16 pt-28 lg:pt-32">
+
+      {/* Vinheta */}
       <div className="mx-auto max-w-7xl">
         <div className="mb-16 text-center">
           <p className="mb-3 text-sm font-semibold uppercase tracking-[0.35em] text-gold">

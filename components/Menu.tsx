@@ -28,7 +28,7 @@ function MenuCard({ item, index }: { item: (typeof menuItems)[number]; index: nu
       ref={ref}
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
-      exit={{opacity: 0, y: -12}}
+      exit={{ opacity: 0, y: -12 }}
       transition={{ duration: 0.45, delay: index * 0.04, ease: [0.16, 1, 0.3, 1] }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
@@ -92,7 +92,7 @@ export default function Menu() {
 
   const tabs = useMemo(
     () => [
-      {id: ALL_ID, label: "Todos"},
+      { id: ALL_ID, label: "Todos" },
       ...menuCategories,
     ],
     []
@@ -104,15 +104,20 @@ export default function Menu() {
   )
 
   return (
-    <section id="cardapio" className="relative px-6 py-28 lg:px-10">
+    <section id="cardapio" className="relative overflow-hidden bg-[#0D0A08] pb-16 pt-28 lg:pt-32">
+
+      {/* Vinheta */}
       <div className="mx-auto max-w-7xl">
         <div className="mb-16 text-center">
           <p className="mb-3 text-sm font-semibold uppercase tracking-[0.35em] text-gold">
             Cardápio
           </p>
-          <h2 className="font-display text-5xl text-cream sm:text-6xl">
+          <h2 className="font-display text-5xl text-cream sm:text-7xl mb-[-25px]">
             Escolha o seu <span className="text-ember">Gordinho</span>
           </h2>
+          <p className="mt-6 text-sm font-semibold tracking-wide text-cream/70">
+            Ingredientes selecionados, preparado artesanal e muito sabor em cada mordida.
+          </p>
         </div>
 
         <div className="mb-12 -mx-6 overflow-x-auto px-6 pb-2 [scrollbar-width:none]
@@ -122,18 +127,17 @@ export default function Menu() {
               const isActive = active === tab.id;
               return (
                 <button
-                key={tab.id}
-                onClick={() => setActive(tab.id)}
-                aria-pressed={isActive}
-                className={`relative whitespace-nowrap rounded-full px-5 py-2.5 text-xs font-bold
-                uppercase tracking-wider transition-colors duration-300 ${
-                  isActive ? "text-char" : "border border-white/10 text-cream/70 hover:border-gold/40 hover:text-cream"
-                }`}>
+                  key={tab.id}
+                  onClick={() => setActive(tab.id)}
+                  aria-pressed={isActive}
+                  className={`relative whitespace-nowrap rounded-full px-5 py-2.5 text-xs font-bold
+                uppercase tracking-wider transition-colors duration-300 ${isActive ? "text-char" : "border border-white/10 text-cream/70 hover:border-gold/40 hover:text-cream"
+                    }`}>
                   {isActive && (
                     <motion.span
-                    layoutId="menu-tab-active"
-                    transition={{type: "spring", stiffness: 380, damping: 32}}
-                    className="absolute inset-0 rounded-full bg-gold"/>
+                      layoutId="menu-tab-active"
+                      transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                      className="absolute inset-0 rounded-full bg-gold" />
                   )}
                   <span className="relative">{tab.label}</span>
                 </button>
@@ -144,9 +148,9 @@ export default function Menu() {
 
         <AnimatePresence mode="popLayout">
           <motion.div
-          key={active}
-          layout
-          className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            key={active}
+            layout
+            className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {filteredItems.map((item, i) => (
               <MenuCard key={item.id} item={item} index={i} />
             ))}
